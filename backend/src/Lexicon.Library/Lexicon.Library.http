@@ -1,0 +1,6 @@
+@Lexicon.Library_HostAddress = http://localhost:5276
+
+GET {{Lexicon.Library_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

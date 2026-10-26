@@ -1,0 +1,12 @@
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\bin\Debug\net9.0\Lexicon.Common.deps.json
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\bin\Debug\net9.0\Lexicon.Common.dll
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\bin\Debug\net9.0\Lexicon.Common.pdb
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\Lexicon.Common.csproj.AssemblyReference.cache
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\Lexicon.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\Lexicon.Common.AssemblyInfoInputs.cache
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\Lexicon.Common.AssemblyInfo.cs
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\Lexicon.Common.csproj.CoreCompileInputs.cache
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\Lexicon.Common.dll
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\refint\Lexicon.Common.dll
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\Lexicon.Common.pdb
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\ref\Lexicon.Common.dll

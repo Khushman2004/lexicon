@@ -10,3 +10,4 @@ C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\D
 C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\refint\Lexicon.Common.dll
 C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\Lexicon.Common.pdb
 C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\ref\Lexicon.Common.dll
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Common\obj\Debug\net9.0\Lexicon.Common.sourcelink.json

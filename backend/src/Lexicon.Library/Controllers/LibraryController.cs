@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lexicon.Library.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/library")]
 public class LibraryController : ControllerBase
@@ -17,6 +18,7 @@ public class LibraryController : ControllerBase
         _libraryService = libraryService;
     }
 
+    [AllowAnonymous]
     [HttpGet("health")]
     public IActionResult HealthCheck()
     {

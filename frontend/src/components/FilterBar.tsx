@@ -13,7 +13,7 @@ interface FilterBarProps {
   filters: FilterState;
   onChange: (filters: FilterState) => void;
   totalCount: number;
-  itemType: 'words' | 'phrases';
+  itemType: 'words' | 'phrases' | 'entries';
 }
 
 export const FilterBar: React.FC<FilterBarProps> = ({ filters, onChange, totalCount, itemType }) => {
@@ -31,11 +31,11 @@ export const FilterBar: React.FC<FilterBarProps> = ({ filters, onChange, totalCo
     } else if (preset === '7days') {
       const past7 = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
       fromDate = past7.toISOString();
-      toDate = new Date().toISOString();
+      toDate = '';
     } else if (preset === '30days') {
       const past30 = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
       fromDate = past30.toISOString();
-      toDate = new Date().toISOString();
+      toDate = '';
     }
 
     setShowCustomDate(preset === 'custom');

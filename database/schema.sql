@@ -397,5 +397,34 @@ BEGIN
     );
 END
 
+-- =====================================================================================
+-- 5. AI Practice Exercises Table (Stories, Conversational Dialogues, Memory Quizzes)
+-- =====================================================================================
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = N'AiExercises')
+BEGIN
+    PRINT 'Creating table AiExercises...';
+    CREATE TABLE AiExercises (
+        Id UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT NEWID(),
+        UserId UNIQUEIDENTIFIER NOT NULL,
+        Title NVARCHAR(200) NOT NULL,
+        ExerciseType NVARCHAR(50) NOT NULL, -- 'story', 'dialogue', 'quiz'
+        Tone NVARCHAR(50) NULL,
+        Content NVARCHAR(MAX) NOT NULL, -- Full narrative story or dialogue script
+        TargetItemsJson NVARCHAR(MAX) NOT NULL, -- JSON array of words/phrases practiced
+        QuizQuestionsJson NVARCHAR(MAX) NULL, -- JSON array of interactive cloze questions
+        TipsForRetention NVARCHAR(500) NULL,
+        CreatedAt DATETIMEOFFSET NOT NULL DEFAULT SYSDATETIMEOFFSET(),
+        CONSTRAINT FK_AiExercises_Users FOREIGN KEY (UserId) REFERENCES Users(Id) ON DELETE CASCADE
+    );
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = N'IX_AiExercises_UserId_CreatedAt' AND object_id = OBJECT_ID(N'AiExercises'))
+BEGIN
+    PRINT 'Creating index IX_AiExercises_UserId_CreatedAt...';
+    CREATE NONCLUSTERED INDEX IX_AiExercises_UserId_CreatedAt ON AiExercises (UserId ASC, CreatedAt DESC);
+END
+GO
+
 PRINT 'Lexicon database initialization complete!';
 GO

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lexicon.Gateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc5438e74868069f75e73cc8947a3cd00b2da7db")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lexicon.Gateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lexicon.Gateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

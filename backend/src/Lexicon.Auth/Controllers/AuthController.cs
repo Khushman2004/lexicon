@@ -66,6 +66,7 @@ public class AuthController : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
     [HttpGet("users")]
     public async Task<IActionResult> SearchUsers([FromQuery] string? query, [FromQuery] int page = 1, [FromQuery] int pageSize = 12)
     {
@@ -73,6 +74,7 @@ public class AuthController : ControllerBase
         return Ok(result);
     }
 
+    [Authorize]
     [HttpGet("users/{id:guid}")]
     public async Task<IActionResult> GetUserProfile([FromRoute] Guid id)
     {

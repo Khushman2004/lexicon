@@ -27,8 +27,8 @@ apiClient.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
     if (error.response?.status === 401) {
-      // If token expired and not on login/register, clear and redirect or notify
-      // localStorage.removeItem('lexicon_token');
+      localStorage.removeItem('lexicon_token');
+      window.dispatchEvent(new Event('lexicon:unauthorized'));
     }
     return Promise.reject(error);
   }

@@ -78,3 +78,4 @@ C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Library\obj\
 C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Library\obj\Debug\net9.0\Lexicon.Library.pdb
 C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Library\obj\Debug\net9.0\Lexicon.Library.genruntimeconfig.cache
 C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Library\obj\Debug\net9.0\ref\Lexicon.Library.dll
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Library\obj\Debug\net9.0\Lexicon.Library.sourcelink.json

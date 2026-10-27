@@ -1,10 +1,10 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
-import { BookOpen, Users, Plus, LogOut, LogIn, Sparkles, Layers } from 'lucide-react';
+import { BookOpen, Users, Plus, LogOut, LogIn, Layers } from 'lucide-react';
 
 interface NavbarProps {
-  currentTab: 'words' | 'phrases' | 'explore';
-  onTabChange: (tab: 'words' | 'phrases' | 'explore') => void;
+  currentNav: 'library' | 'explore';
+  onNavChange: (nav: 'library' | 'explore') => void;
   onOpenAddModal: (type: 'word' | 'phrase') => void;
   onOpenAuthModal: () => void;
   viewingOtherUser: { id: string; username: string } | null;
@@ -12,8 +12,8 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  currentTab,
-  onTabChange,
+  currentNav,
+  onNavChange,
   onOpenAddModal,
   onOpenAuthModal,
   viewingOtherUser,
@@ -43,12 +43,15 @@ export const Navbar: React.FC<NavbarProps> = ({
       }}>
         {/* Brand Logo & Microservice Badge */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 10,
-            cursor: 'pointer',
-          }} onClick={onBackToMyLibrary}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 10,
+              cursor: 'pointer',
+            }}
+            onClick={onBackToMyLibrary}
+          >
             <div style={{
               width: 40,
               height: 40,
@@ -90,44 +93,44 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Center Navigation */}
-        <nav style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 6,
-          background: 'rgba(255, 255, 255, 0.03)',
-          padding: 4,
-          borderRadius: 'var(--radius-lg)',
-          border: '1px solid var(--border-glass)',
-        }}>
-          {viewingOtherUser ? (
-            <button
-              onClick={onBackToMyLibrary}
-              style={{
-                background: 'rgba(99, 102, 241, 0.2)',
-                color: '#c7d2fe',
-                border: '1px solid rgba(99, 102, 241, 0.4)',
-                padding: '6px 14px',
-                borderRadius: 'var(--radius-md)',
-                fontWeight: 600,
-                fontSize: 13,
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 6,
-              }}
-            >
-              &larr; Back to My Library
-            </button>
-          ) : (
-            <>
+        {/* Center Navigation: My Library vs Explore Members (Only for Authenticated Users) */}
+        {user && (
+          <nav style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            background: 'rgba(255, 255, 255, 0.03)',
+            padding: 4,
+            borderRadius: 'var(--radius-lg)',
+            border: '1px solid var(--border-glass)',
+          }}>
+            {viewingOtherUser ? (
               <button
-                onClick={() => onTabChange('words')}
+                onClick={onBackToMyLibrary}
                 style={{
-                  background: currentTab === 'words' ? 'rgba(99, 102, 241, 0.25)' : 'transparent',
-                  color: currentTab === 'words' ? '#ffffff' : 'var(--text-secondary)',
-                  border: currentTab === 'words' ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid transparent',
-                  padding: '6px 16px',
+                  background: 'rgba(99, 102, 241, 0.2)',
+                  color: '#c7d2fe',
+                  border: '1px solid rgba(99, 102, 241, 0.4)',
+                  padding: '6px 14px',
+                  borderRadius: 'var(--radius-md)',
+                  fontWeight: 600,
+                  fontSize: 13,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6,
+                }}
+              >
+                &larr; Back to My Library
+              </button>
+            ) : (
+              <button
+                onClick={() => onNavChange('library')}
+                style={{
+                  background: currentNav === 'library' ? 'rgba(99, 102, 241, 0.25)' : 'transparent',
+                  color: currentNav === 'library' ? '#ffffff' : 'var(--text-secondary)',
+                  border: currentNav === 'library' ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid transparent',
+                  padding: '6px 18px',
                   borderRadius: 'var(--radius-md)',
                   fontWeight: 600,
                   fontSize: 13,
@@ -139,52 +142,32 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }}
               >
                 <BookOpen size={15} />
-                Words Tab
+                My Library
               </button>
-              <button
-                onClick={() => onTabChange('phrases')}
-                style={{
-                  background: currentTab === 'phrases' ? 'rgba(99, 102, 241, 0.25)' : 'transparent',
-                  color: currentTab === 'phrases' ? '#ffffff' : 'var(--text-secondary)',
-                  border: currentTab === 'phrases' ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid transparent',
-                  padding: '6px 16px',
-                  borderRadius: 'var(--radius-md)',
-                  fontWeight: 600,
-                  fontSize: 13,
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 6,
-                }}
-              >
-                <Sparkles size={15} />
-                Phrases Tab
-              </button>
-            </>
-          )}
+            )}
 
-          <button
-            onClick={() => onTabChange('explore')}
-            style={{
-              background: currentTab === 'explore' ? 'rgba(99, 102, 241, 0.25)' : 'transparent',
-              color: currentTab === 'explore' ? '#ffffff' : 'var(--text-secondary)',
-              border: currentTab === 'explore' ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid transparent',
-              padding: '6px 16px',
-              borderRadius: 'var(--radius-md)',
-              fontWeight: 600,
-              fontSize: 13,
-              cursor: 'pointer',
-              transition: 'all 0.2s',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-            }}
-          >
-            <Users size={15} />
-            Explore Members
-          </button>
-        </nav>
+            <button
+              onClick={() => onNavChange('explore')}
+              style={{
+                background: currentNav === 'explore' ? 'rgba(99, 102, 241, 0.25)' : 'transparent',
+                color: currentNav === 'explore' ? '#ffffff' : 'var(--text-secondary)',
+                border: currentNav === 'explore' ? '1px solid rgba(99, 102, 241, 0.4)' : '1px solid transparent',
+                padding: '6px 18px',
+                borderRadius: 'var(--radius-md)',
+                fontWeight: 600,
+                fontSize: 13,
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 6,
+              }}
+            >
+              <Users size={15} />
+              Explore Members
+            </button>
+          </nav>
+        )}
 
         {/* User Actions & Profile */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>

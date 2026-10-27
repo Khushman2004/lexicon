@@ -30,3 +30,4 @@ C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Gateway\obj\
 C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Gateway\obj\Debug\net9.0\Lexicon.Gateway.pdb
 C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Gateway\obj\Debug\net9.0\Lexicon.Gateway.genruntimeconfig.cache
 C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Gateway\obj\Debug\net9.0\ref\Lexicon.Gateway.dll
+C:\Users\Khushmanpreet\Desktop\Projects\lexicon\backend\src\Lexicon.Gateway\obj\Debug\net9.0\Lexicon.Gateway.sourcelink.json

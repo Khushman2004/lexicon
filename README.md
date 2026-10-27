@@ -31,12 +31,13 @@
 
 **LEXICON** transforms personal vocabulary collecting into a structured, social experience:
 - **Registration / Login & Identity**: Secure authentication issuing signed JWT tokens with claims-based access.
-- **Personal Dictionary Creation**: Every user curates their own private or public dictionary divided into two distinct tabs:
-  - **Words Tab**: Individual vocabulary terms, definitions, parts of speech (noun, verb, adjective, etc.), example sentences, tags, and etymological notes.
-  - **Phrases Tab**: Figurative idioms, conversational expressions, meanings, and real-life dialogue contexts.
-- **Automatic Alphabetical Sorting**: All words and phrases are automatically sorted alphabetically (A &rarr; Z) using SQL collation, accompanied by an interactive quick-jump A-Z index bar.
+- **Personal Dictionary Creation**: Every user curates their own private or public dictionary:
+  - **Interactive Clickable Filter Boxes**: The stats cards at the top (Words Catalog and Phrases & Idioms) are interactive filter boxes. Clicking a box dynamically filters the display section below to Words or Phrases with an illuminated active ring.
+  - **"View All" Unified View**: A dedicated "View All Data" action above the display section that unifies all words and phrases into one cohesive, automatically alphabetized collection.
+  - **Dual Display Modes (Cards & Tabular) with Default Choice**: Toggle seamlessly between rich interactive Cards (with pronunciation audio, badges, and etymology) and a sleek, high-density Tabular Data Table. Users can set and persist their preferred default view with a single click.
+- **Automatic Alphabetical Sorting**: All entries are automatically sorted alphabetically (A &rarr; Z) using SQL collation, accompanied by an interactive quick-jump A-Z index bar.
 - **Datetime Filtering**: Filter entries by custom date windows or presets (Today, Past 7 Days, Past 30 Days) to review what was learned over time.
-- **Interactive Audio**: Native speech synthesis integration to pronounce any word or phrase directly in the browser.
+- **Interactive Audio**: Native speech synthesis integration (`speechSynthesis`) to pronounce any word or phrase directly in the browser.
 - **Community Exploration**: Browse other users' public libraries, view their curated language collections, and prepare for upcoming peer-to-peer social features (friendships and direct messaging).
 
 ---
@@ -272,13 +273,44 @@ The idempotent SQL script includes two ready-to-use accounts with curated vocabu
 
 ---
 
-## 7. Social & Chat Roadmap
+## 7. Data Privacy & Strict Access Control
+
+To maintain strict data security and privacy, **no personal data (words, phrases, summaries) and no network data (community members, profiles) can be accessed anonymously**:
+
+| Protected Resource | Microservice Endpoint | Auth Requirement | Unauthenticated Behavior |
+| :--- | :--- | :--- | :--- |
+| **Personal Words** | `GET /api/library/words` | `[Authorize]` JWT | **401 Unauthorized** (Wiped from memory) |
+| **Personal Phrases** | `GET /api/library/phrases` | `[Authorize]` JWT | **401 Unauthorized** (Wiped from memory) |
+| **Library Summary** | `GET /api/library/summary` | `[Authorize]` JWT | **401 Unauthorized** (Hidden from UI) |
+| **Network Community** | `GET /api/auth/users` | `[Authorize]` JWT | **401 Unauthorized** (Hidden from UI) |
+| **Member Profiles** | `GET /api/auth/users/{id}` | `[Authorize]` JWT | **401 Unauthorized** (Hidden from UI) |
+| **Frontend UI Gate** | React `<AuthGate />` | Logged In State | Full-page security gate; 0 entries shown |
+
+### Automated Security Gate Verification:
+A PowerShell test script is provided to verify that all endpoints strictly reject unauthenticated requests with `401` and accept authenticated requests with `200`:
+```powershell
+.\scripts\test_security.ps1
+```
+
+---
+
+## 8. Social & Chat Roadmap
 
 The foundational schema tables (`Friendships` and `ChatMessages`) are already created in the database. Future iterations will add:
 1. **`Lexicon.Social` Microservice**: Manage friend requests, status transitions (`PENDING`, `ACCEPTED`), and follower feeds.
 2. **`Lexicon.Chat` Microservice**: Real-time two-way messaging using **ASP.NET Core SignalR** websockets routed through the YARP gateway.
 3. **Shared Collections**: Ability to fork or bookmark words and phrases from other curators into your own personal dictionary.
 
+---
 
-how to run :
- .\scripts\start_all.ps1
+## 9. Quick Start Guide
+
+To run the entire system with one command:
+```powershell
+.\scripts\start_all.ps1
+```
+Or run the security verification test:
+```powershell
+.\scripts\test_security.ps1
+```
+Navigate your browser to: **`http://localhost:5173`** (or `http://localhost:5174`).

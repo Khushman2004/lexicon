@@ -40,6 +40,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
 
     initAuth();
+
+    const handleUnauthorized = () => {
+      logout();
+    };
+    window.addEventListener('lexicon:unauthorized', handleUnauthorized);
+    return () => window.removeEventListener('lexicon:unauthorized', handleUnauthorized);
   }, []);
 
   const login = async (usernameOrEmail: string, password: string): Promise<boolean> => {

@@ -248,3 +248,88 @@ export const libraryApi = {
     return res.data;
   },
 };
+
+// AI Practice & Memory Lab API Types
+export interface TargetVocabularyItem {
+  termOrPhrase: string;
+  type: 'word' | 'phrase';
+  definition: string;
+  partOfSpeech?: string;
+  exampleSentence?: string;
+}
+
+export interface ClozeQuestion {
+  questionNumber: number;
+  sentenceWithBlank: string;
+  correctAnswer: string;
+  options: string[];
+  contextHint: string;
+  explanation: string;
+}
+
+export interface DialogueTurn {
+  speaker: string;
+  speech: string;
+  highlightedWords: string[];
+}
+
+export interface AiExercise {
+  id: string;
+  userId: string;
+  title: string;
+  exerciseType: 'story' | 'dialogue' | 'quiz';
+  tone?: string;
+  content: string;
+  highlightedVocabulary: string[];
+  targetItems: TargetVocabularyItem[];
+  quizQuestions?: ClozeQuestion[];
+  dialogueTurns?: DialogueTurn[];
+  tipsForRetention: string;
+  createdAt: string;
+}
+
+export interface GenerateExerciseParams {
+  items: TargetVocabularyItem[];
+  exerciseType: 'story' | 'dialogue' | 'quiz';
+  tone?: 'literary' | 'conversational' | 'humorous' | 'philosophical';
+  difficulty?: 'beginner' | 'intermediate' | 'advanced';
+}
+
+export interface SaveExerciseParams {
+  title: string;
+  exerciseType: 'story' | 'dialogue' | 'quiz';
+  tone?: string;
+  content: string;
+  targetItems: TargetVocabularyItem[];
+  quizQuestions?: ClozeQuestion[];
+  tipsForRetention?: string;
+}
+
+// AI API Calls
+export const aiApi = {
+  generateExercise: async (params: GenerateExerciseParams) => {
+    const res = await apiClient.post<ApiResponse<AiExercise>>('/api/ai/generate', params);
+    return res.data;
+  },
+
+  saveExercise: async (params: SaveExerciseParams) => {
+    const res = await apiClient.post<ApiResponse<string>>('/api/ai/saved', params);
+    return res.data;
+  },
+
+  getHistory: async () => {
+    const res = await apiClient.get<ApiResponse<AiExercise[]>>('/api/ai/history');
+    return res.data;
+  },
+
+  getExerciseById: async (id: string) => {
+    const res = await apiClient.get<ApiResponse<AiExercise>>(`/api/ai/exercises/${id}`);
+    return res.data;
+  },
+
+  deleteExercise: async (id: string) => {
+    const res = await apiClient.delete<ApiResponse<boolean>>(`/api/ai/exercises/${id}`);
+    return res.data;
+  },
+};
+

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Lexicon.Auth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc5438e74868069f75e73cc8947a3cd00b2da7db")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c0690fd9af85ebb783f4c52f5e0034e13b78609")]
 [assembly: System.Reflection.AssemblyProductAttribute("Lexicon.Auth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Lexicon.Auth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

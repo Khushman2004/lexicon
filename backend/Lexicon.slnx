@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Lexicon.Ai/Lexicon.Ai.csproj" />
     <Project Path="src/Lexicon.Auth/Lexicon.Auth.csproj" />
     <Project Path="src/Lexicon.Common/Lexicon.Common.csproj" />
     <Project Path="src/Lexicon.Gateway/Lexicon.Gateway.csproj" />
